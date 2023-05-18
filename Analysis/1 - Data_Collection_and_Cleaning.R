@@ -50,6 +50,8 @@ merged <- merged %>%
          "mil.per" = "milper",
          "region" = "e_regiongeo")
 
+# Data Manipulation
+
 # Create Region Samples
 latin.am <- merged %>%
   # Central/South American and the Caribbean
