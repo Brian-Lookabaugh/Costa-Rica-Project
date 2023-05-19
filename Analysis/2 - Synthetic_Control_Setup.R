@@ -60,3 +60,16 @@ cor(num$democracy, num$mil.per, # Not Significant
     use = "pairwise.complete.obs")
 
 # Synthetic Control Set-Up
+synth <- latin.am %>%
+  ## Create the Synthetic Control Object
+  synthetic_control(outcome = democracy,
+                    unit = COWcode,
+                    time = year,
+                    i_unit = "Costa Rica",
+                    i_time = 1949,
+                    generate_placebos = T) %>%
+  generate_predictor(time_window = 1935:1949,
+                     ) %>%
+  generate_weights(optimization_window = 1935:1949,
+                   margin_ipop = .02, sigf_ipop = 7, bound_ipop = 6) %>%
+  generate_control()
