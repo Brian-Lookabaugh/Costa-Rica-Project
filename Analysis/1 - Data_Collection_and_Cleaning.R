@@ -51,6 +51,15 @@ merged <- merged %>%
          "region" = "e_regiongeo")
 
 # Data Manipulation
+merged <- merged %>%
+  mutate(lgdppc = log(gdppc)) %>%
+  filter(mil.per != -9) %>%
+  mutate(lmilper = log(mil.per)) %>%
+  filter(mil.spend != -9) %>%
+  mutate(lmilspend = log(mil.spend)) %>%
+  mutate(lpop = log(pop)) %>%
+  mutate(lpop2 = log(pop2))
+  # Transpose Certain Variables Where 0 Is the Lowest Value
 
 # Create Region Samples
 latin.am <- merged %>%
