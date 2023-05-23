@@ -37,6 +37,7 @@ merged <- merged %>%
          "social.exc" = "v2xpe_exlsocgr",
          "male.slave" = "v2clslavem",
          "female.slave" = "v2clslavef",
+         "slavery" = "v2xcl_slave",
          "state.econ" = "v2clstown",
          "property.male" = "v2clprptym",
          "property.female" = "v2clprptyw",
@@ -48,7 +49,8 @@ merged <- merged %>%
          "civ.society" = "v2xcs_ccsi",
          "mil.spend" = "milex",
          "mil.per" = "milper",
-         "region" = "e_regiongeo")
+         "region" = "e_regiongeo",
+         "labor" = "v3cllabrig")
 
 # Data Manipulation
 merged <- merged %>%
