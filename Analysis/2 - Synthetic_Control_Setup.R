@@ -59,8 +59,8 @@ cor(num$democracy, num$mil.spend,
 cor(num$democracy, num$mil.per, # Not Significant
     use = "pairwise.complete.obs")
 
-# Synthetic Control Set-Up
-synth <- latin.am %>%
+# Synthetic Control Set-Up (Mean Pre-Treatment Outcomes)
+synth1 <- latin.am %>%
   ## Create the Synthetic Control Object
   synthetic_control(outcome = democracy,
                     unit = COWcode,
@@ -73,3 +73,11 @@ synth <- latin.am %>%
   generate_weights(optimization_window = 1935:1949,
                    margin_ipop = .02, sigf_ipop = 7, bound_ipop = 6) %>%
   generate_control()
+
+# First Half Pre-Treatment Outcomes
+
+# First Three-Quarters Pre-Treatment Outcomes
+
+# Even Pre-Treatment Outcomes
+
+# Odd Pre-Treatment Outcomes
