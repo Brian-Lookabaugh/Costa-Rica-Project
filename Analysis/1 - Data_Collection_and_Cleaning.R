@@ -51,22 +51,22 @@ merged <- merged %>%
          "mil.per" = "milper",
          "region" = "e_regiongeo",
          "labor" = "v3cllabrig",
-         "distribution" = "v2xeg_eqdr")
+         "distribution" = "v2xeg_eqdr",
+         "pol.v" = "v2caviol",
+         "phys.v" = "v2x_clphy",
+         "clean.elec" = "v2xel_frefair")
 
 # Data Manipulation
 merged <- merged %>%
-  mutate(lgdppc = log(gdppc + 1)) %>%
-  mutate(mil.per = if_else(mil.per == -9, NA, mil.per)) %>%
-  mutate(lmilper = log(mil.per + 1)) %>%
-  filter(mil.spend != -9) %>%
-  mutate(lmilspend = log(mil.spend + 1)) %>%
-  mutate(lpop = log(pop)) %>%
-  mutate(lpop2 = log(pop2))
+  mutate(lgdppc = log(gdppc + 1), na.rm = T) %>%
+  mutate(mil.per = na_if(mil.per, "-9")) %>%
+  mutate(lmilper = log(mil.per + 1), na.rm = T) %>%
+  mutate(mil.spend = na_if(mil.spend, "-9")) %>%
+  mutate(lmilspend = log(mil.spend + 1), na.rm = T) %>%
+  mutate(lpop = log(pop), na.rm = T) %>%
+  mutate(lpop2 = log(pop2), na.rm = T)
 
 # Create Region Samples
 latin.am <- merged %>%
   # Central/South American and the Caribbean
   filter(region %in% c("17", "18", "19"))
-
-central.am <- merged %>%
-  filter(region == 17)
